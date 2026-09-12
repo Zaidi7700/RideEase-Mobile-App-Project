@@ -1,0 +1,1000 @@
+<html>
+<head>
+<title>main.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #6aab73;}
+.s2 { color: #bcbec4;}
+.s3 { color: #cf8e6d;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:google_maps_flutter/google_maps_flutter.dart'</span><span class="s2">;</span>
+
+<span class="s3">void </span><span class="s0">main</span><span class="s2">() {</span>
+  <span class="s0">runApp</span><span class="s2">(</span><span class="s3">const </span><span class="s0">RideEaseApp</span><span class="s2">());</span>
+<span class="s2">}</span>
+
+<span class="s3">class </span><span class="s0">RideEaseApp </span><span class="s3">extends </span><span class="s0">StatelessWidget </span><span class="s2">{</span>
+  <span class="s3">const </span><span class="s0">RideEaseApp</span><span class="s2">({</span><span class="s3">super</span><span class="s2">.</span><span class="s0">key</span><span class="s2">});</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build</span><span class="s2">(</span><span class="s0">BuildContext context</span><span class="s2">) {</span>
+    <span class="s3">return </span><span class="s0">MaterialApp</span><span class="s2">(</span>
+      <span class="s0">debugShowCheckedModeBanner</span><span class="s2">: </span><span class="s3">false</span><span class="s2">,</span>
+      <span class="s0">title</span><span class="s2">: </span><span class="s1">&quot;RideEase&quot;</span><span class="s2">,</span>
+      <span class="s0">theme</span><span class="s2">: </span><span class="s0">ThemeData</span><span class="s2">(</span>
+        <span class="s0">colorScheme</span><span class="s2">: </span><span class="s0">ColorScheme</span><span class="s2">.</span><span class="s0">fromSeed</span><span class="s2">(</span>
+          <span class="s0">seedColor</span><span class="s2">: </span><span class="s0">Colors</span><span class="s2">.</span><span class="s0">green</span><span class="s2">,</span>
+        <span class="s2">),</span>
+        <span class="s0">useMaterial3</span><span class="s2">: </span><span class="s3">true</span><span class="s2">,</span>
+      <span class="s2">),</span>
+      <span class="s0">home</span><span class="s2">: </span><span class="s3">const </span><span class="s0">WelcomeScreen</span><span class="s2">(),</span>
+    <span class="s2">);</span>
+  <span class="s2">}</span>
+<span class="s2">}</span>
+
+
+<span class="s4">// Welcome Screen</span>
+
+<span class="s3">class </span><span class="s0">WelcomeScreen </span><span class="s3">extends </span><span class="s0">StatelessWidget </span><span class="s2">{</span>
+  <span class="s3">const </span><span class="s0">WelcomeScreen</span><span class="s2">({</span><span class="s3">super</span><span class="s2">.</span><span class="s0">key</span><span class="s2">});</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build</span><span class="s2">(</span><span class="s0">BuildContext context</span><span class="s2">) {</span>
+
+    <span class="s3">return </span><span class="s0">Scaffold</span><span class="s2">(</span>
+      <span class="s0">body</span><span class="s2">: </span><span class="s0">Padding</span><span class="s2">(</span>
+        <span class="s0">padding</span><span class="s2">: </span><span class="s3">const </span><span class="s0">EdgeInsets</span><span class="s2">.</span><span class="s0">all</span><span class="s2">(</span><span class="s5">25</span><span class="s2">),</span>
+
+        <span class="s0">child</span><span class="s2">: </span><span class="s0">Column</span><span class="s2">(</span>
+          <span class="s0">mainAxisAlignment</span><span class="s2">: </span><span class="s0">MainAxisAlignment</span><span class="s2">.</span><span class="s0">center</span><span class="s2">,</span>
+
+          <span class="s0">children</span><span class="s2">: [</span>
+
+            <span class="s3">const </span><span class="s0">Icon</span><span class="s2">(</span>
+              <span class="s0">Icons</span><span class="s2">.</span><span class="s0">local_taxi</span><span class="s2">,</span>
+              <span class="s0">size</span><span class="s2">: </span><span class="s5">120</span><span class="s2">,</span>
+              <span class="s0">color</span><span class="s2">: </span><span class="s0">Colors</span><span class="s2">.</span><span class="s0">green</span><span class="s2">,</span>
+            <span class="s2">),</span>
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">30</span><span class="s2">),</span>
+
+            <span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+              <span class="s1">&quot;Welcome to RideEase&quot;</span><span class="s2">,</span>
+              <span class="s0">style</span><span class="s2">: </span><span class="s0">TextStyle</span><span class="s2">(</span>
+                <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">30</span><span class="s2">,</span>
+                <span class="s0">fontWeight</span><span class="s2">:</span><span class="s0">FontWeight</span><span class="s2">.</span><span class="s0">bold</span><span class="s2">,</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">15</span><span class="s2">),</span>
+
+            <span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+              <span class="s1">&quot;Smart ride-hailing across Australia&quot;</span><span class="s2">,</span>
+              <span class="s0">style</span><span class="s2">: </span><span class="s0">TextStyle</span><span class="s2">(</span>
+                <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">18</span><span class="s2">,</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">50</span><span class="s2">),</span>
+
+            <span class="s0">SizedBox</span><span class="s2">(</span>
+              <span class="s0">width</span><span class="s2">:</span><span class="s0">double</span><span class="s2">.</span><span class="s0">infinity</span><span class="s2">,</span>
+              <span class="s0">height</span><span class="s2">:</span><span class="s5">55</span><span class="s2">,</span>
+
+              <span class="s0">child</span><span class="s2">: </span><span class="s0">ElevatedButton</span><span class="s2">(</span>
+
+                <span class="s0">onPressed</span><span class="s2">:(){</span>
+
+                  <span class="s0">Navigator</span><span class="s2">.</span><span class="s0">push</span><span class="s2">(</span>
+                    <span class="s0">context</span><span class="s2">,</span>
+                    <span class="s0">MaterialPageRoute</span><span class="s2">(</span>
+                      <span class="s0">builder</span><span class="s2">:(</span><span class="s0">context</span><span class="s2">)=&gt;</span>
+                      <span class="s3">const </span><span class="s0">LoginScreen</span><span class="s2">(),</span>
+                    <span class="s2">),</span>
+                  <span class="s2">);</span>
+
+                <span class="s2">},</span>
+
+                <span class="s0">child</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+                  <span class="s1">&quot;Get Started&quot;</span><span class="s2">,</span>
+                  <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                    <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">18</span><span class="s2">,</span>
+                  <span class="s2">),</span>
+                <span class="s2">),</span>
+
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+          <span class="s2">],</span>
+        <span class="s2">),</span>
+      <span class="s2">),</span>
+    <span class="s2">);</span>
+  <span class="s2">}</span>
+<span class="s2">}</span>
+
+
+<span class="s4">// Login Screen</span>
+
+<span class="s3">class </span><span class="s0">LoginScreen </span><span class="s3">extends </span><span class="s0">StatelessWidget </span><span class="s2">{</span>
+
+  <span class="s3">const </span><span class="s0">LoginScreen</span><span class="s2">({</span><span class="s3">super</span><span class="s2">.</span><span class="s0">key</span><span class="s2">});</span>
+
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build</span><span class="s2">(</span><span class="s0">BuildContext context</span><span class="s2">){</span>
+
+    <span class="s3">return </span><span class="s0">Scaffold</span><span class="s2">(</span>
+
+      <span class="s0">appBar</span><span class="s2">:</span><span class="s0">AppBar</span><span class="s2">(</span>
+        <span class="s0">title</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Login&quot;</span><span class="s2">),</span>
+      <span class="s2">),</span>
+
+
+      <span class="s0">body</span><span class="s2">:</span><span class="s0">Padding</span><span class="s2">(</span>
+        <span class="s0">padding</span><span class="s2">:</span><span class="s3">const </span><span class="s0">EdgeInsets</span><span class="s2">.</span><span class="s0">all</span><span class="s2">(</span><span class="s5">20</span><span class="s2">),</span>
+
+        <span class="s0">child</span><span class="s2">:</span><span class="s0">Column</span><span class="s2">(</span>
+
+          <span class="s0">mainAxisAlignment</span><span class="s2">:</span><span class="s0">MainAxisAlignment</span><span class="s2">.</span><span class="s0">center</span><span class="s2">,</span>
+
+          <span class="s0">children</span><span class="s2">:[</span>
+
+            <span class="s3">const </span><span class="s0">Icon</span><span class="s2">(</span>
+              <span class="s0">Icons</span><span class="s2">.</span><span class="s0">account_circle</span><span class="s2">,</span>
+              <span class="s0">size</span><span class="s2">:</span><span class="s5">100</span><span class="s2">,</span>
+              <span class="s0">color</span><span class="s2">:</span><span class="s0">Colors</span><span class="s2">.</span><span class="s0">green</span><span class="s2">,</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">25</span><span class="s2">),</span>
+
+
+            <span class="s0">TextField</span><span class="s2">(</span>
+              <span class="s0">decoration</span><span class="s2">:</span><span class="s0">InputDecoration</span><span class="s2">(</span>
+                <span class="s0">labelText</span><span class="s2">:</span><span class="s1">&quot;Email&quot;</span><span class="s2">,</span>
+                <span class="s0">prefixIcon</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Icon</span><span class="s2">(</span><span class="s0">Icons</span><span class="s2">.</span><span class="s0">email</span><span class="s2">),</span>
+                <span class="s0">border</span><span class="s2">:</span><span class="s0">OutlineInputBorder</span><span class="s2">(</span>
+                  <span class="s0">borderRadius</span><span class="s2">:</span><span class="s0">BorderRadius</span><span class="s2">.</span><span class="s0">circular</span><span class="s2">(</span><span class="s5">15</span><span class="s2">),</span>
+                <span class="s2">),</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">15</span><span class="s2">),</span>
+
+
+            <span class="s0">TextField</span><span class="s2">(</span>
+              <span class="s0">obscureText</span><span class="s2">:</span><span class="s3">true</span><span class="s2">,</span>
+
+              <span class="s0">decoration</span><span class="s2">:</span><span class="s0">InputDecoration</span><span class="s2">(</span>
+                <span class="s0">labelText</span><span class="s2">:</span><span class="s1">&quot;Password&quot;</span><span class="s2">,</span>
+                <span class="s0">prefixIcon</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Icon</span><span class="s2">(</span><span class="s0">Icons</span><span class="s2">.</span><span class="s0">lock</span><span class="s2">),</span>
+                <span class="s0">border</span><span class="s2">:</span><span class="s0">OutlineInputBorder</span><span class="s2">(</span>
+                  <span class="s0">borderRadius</span><span class="s2">:</span><span class="s0">BorderRadius</span><span class="s2">.</span><span class="s0">circular</span><span class="s2">(</span><span class="s5">15</span><span class="s2">),</span>
+                <span class="s2">),</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">30</span><span class="s2">),</span>
+
+
+            <span class="s0">SizedBox</span><span class="s2">(</span>
+              <span class="s0">width</span><span class="s2">:</span><span class="s0">double</span><span class="s2">.</span><span class="s0">infinity</span><span class="s2">,</span>
+              <span class="s0">height</span><span class="s2">:</span><span class="s5">55</span><span class="s2">,</span>
+
+              <span class="s0">child</span><span class="s2">:</span><span class="s0">ElevatedButton</span><span class="s2">(</span>
+
+                <span class="s0">onPressed</span><span class="s2">:(){</span>
+
+                  <span class="s0">Navigator</span><span class="s2">.</span><span class="s0">push</span><span class="s2">(</span>
+                    <span class="s0">context</span><span class="s2">,</span>
+                    <span class="s0">MaterialPageRoute</span><span class="s2">(</span>
+                      <span class="s0">builder</span><span class="s2">:(</span><span class="s0">context</span><span class="s2">)=&gt;</span>
+                      <span class="s3">const </span><span class="s0">RideEaseHome</span><span class="s2">(),</span>
+                    <span class="s2">),</span>
+                  <span class="s2">);</span>
+
+                <span class="s2">},</span>
+
+
+                <span class="s0">child</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+                  <span class="s1">&quot;Login&quot;</span><span class="s2">,</span>
+                  <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                    <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">18</span><span class="s2">,</span>
+                  <span class="s2">),</span>
+                <span class="s2">),</span>
+
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+          <span class="s2">],</span>
+        <span class="s2">),</span>
+      <span class="s2">),</span>
+    <span class="s2">);</span>
+  <span class="s2">}</span>
+<span class="s2">}</span>
+
+
+<span class="s4">// Home Screen</span>
+
+<span class="s3">class </span><span class="s0">RideEaseHome </span><span class="s3">extends </span><span class="s0">StatelessWidget </span><span class="s2">{</span>
+
+  <span class="s3">const </span><span class="s0">RideEaseHome</span><span class="s2">({</span><span class="s3">super</span><span class="s2">.</span><span class="s0">key</span><span class="s2">});</span>
+
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build</span><span class="s2">(</span><span class="s0">BuildContext context</span><span class="s2">){</span>
+
+    <span class="s3">return </span><span class="s0">Scaffold</span><span class="s2">(</span>
+
+      <span class="s0">appBar</span><span class="s2">:</span><span class="s0">AppBar</span><span class="s2">(</span>
+        <span class="s0">title</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+          <span class="s1">&quot;RideEase Australia&quot;</span><span class="s2">,</span>
+          <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+            <span class="s0">fontWeight</span><span class="s2">:</span><span class="s0">FontWeight</span><span class="s2">.</span><span class="s0">bold</span><span class="s2">,</span>
+          <span class="s2">),</span>
+        <span class="s2">),</span>
+        <span class="s0">centerTitle</span><span class="s2">:</span><span class="s3">true</span><span class="s2">,</span>
+      <span class="s2">),</span>
+
+
+      <span class="s0">body</span><span class="s2">:</span><span class="s0">Padding</span><span class="s2">(</span>
+        <span class="s0">padding</span><span class="s2">:</span><span class="s3">const </span><span class="s0">EdgeInsets</span><span class="s2">.</span><span class="s0">all</span><span class="s2">(</span><span class="s5">20</span><span class="s2">),</span>
+
+        <span class="s0">child</span><span class="s2">:</span><span class="s0">Column</span><span class="s2">(</span>
+
+          <span class="s0">crossAxisAlignment</span><span class="s2">:</span><span class="s0">CrossAxisAlignment</span><span class="s2">.</span><span class="s0">start</span><span class="s2">,</span>
+
+          <span class="s0">children</span><span class="s2">:[</span>
+
+            <span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+              <span class="s1">&quot;Where are you going?&quot;</span><span class="s2">,</span>
+              <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">28</span><span class="s2">,</span>
+                <span class="s0">fontWeight</span><span class="s2">:</span><span class="s0">FontWeight</span><span class="s2">.</span><span class="s0">bold</span><span class="s2">,</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">20</span><span class="s2">),</span>
+
+
+            <span class="s0">GestureDetector</span><span class="s2">(</span>
+              <span class="s0">onTap</span><span class="s2">: () {</span>
+
+                <span class="s0">Navigator</span><span class="s2">.</span><span class="s0">push</span><span class="s2">(</span>
+                  <span class="s0">context</span><span class="s2">,</span>
+                  <span class="s0">MaterialPageRoute</span><span class="s2">(</span>
+                    <span class="s0">builder</span><span class="s2">: (</span><span class="s0">context</span><span class="s2">) =&gt; </span><span class="s3">const </span><span class="s0">MapScreen</span><span class="s2">(),</span>
+                  <span class="s2">),</span>
+                <span class="s2">);</span>
+
+              <span class="s2">},</span>
+
+              <span class="s0">child</span><span class="s2">: </span><span class="s0">AbsorbPointer</span><span class="s2">(</span>
+                <span class="s0">child</span><span class="s2">: </span><span class="s0">TextField</span><span class="s2">(</span>
+                  <span class="s0">decoration</span><span class="s2">: </span><span class="s0">InputDecoration</span><span class="s2">(</span>
+                    <span class="s0">labelText</span><span class="s2">: </span><span class="s1">&quot;Pickup location&quot;</span><span class="s2">,</span>
+                    <span class="s0">prefixIcon</span><span class="s2">: </span><span class="s3">const </span><span class="s0">Icon</span><span class="s2">(</span><span class="s0">Icons</span><span class="s2">.</span><span class="s0">my_location</span><span class="s2">),</span>
+                    <span class="s0">border</span><span class="s2">: </span><span class="s0">OutlineInputBorder</span><span class="s2">(</span>
+                      <span class="s0">borderRadius</span><span class="s2">: </span><span class="s0">BorderRadius</span><span class="s2">.</span><span class="s0">circular</span><span class="s2">(</span><span class="s5">15</span><span class="s2">),</span>
+                    <span class="s2">),</span>
+                  <span class="s2">),</span>
+                <span class="s2">),</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">15</span><span class="s2">),</span>
+
+
+            <span class="s0">GestureDetector</span><span class="s2">(</span>
+              <span class="s0">onTap</span><span class="s2">: () {</span>
+
+                <span class="s0">Navigator</span><span class="s2">.</span><span class="s0">push</span><span class="s2">(</span>
+                  <span class="s0">context</span><span class="s2">,</span>
+                  <span class="s0">MaterialPageRoute</span><span class="s2">(</span>
+                    <span class="s0">builder</span><span class="s2">: (</span><span class="s0">context</span><span class="s2">) =&gt; </span><span class="s3">const </span><span class="s0">MapScreen</span><span class="s2">(),</span>
+                  <span class="s2">),</span>
+                <span class="s2">);</span>
+
+              <span class="s2">},</span>
+
+              <span class="s0">child</span><span class="s2">: </span><span class="s0">AbsorbPointer</span><span class="s2">(</span>
+                <span class="s0">child</span><span class="s2">: </span><span class="s0">TextField</span><span class="s2">(</span>
+                  <span class="s0">decoration</span><span class="s2">: </span><span class="s0">InputDecoration</span><span class="s2">(</span>
+                    <span class="s0">labelText</span><span class="s2">: </span><span class="s1">&quot;Destination&quot;</span><span class="s2">,</span>
+                    <span class="s0">prefixIcon</span><span class="s2">: </span><span class="s3">const </span><span class="s0">Icon</span><span class="s2">(</span><span class="s0">Icons</span><span class="s2">.</span><span class="s0">location_on</span><span class="s2">),</span>
+                    <span class="s0">border</span><span class="s2">: </span><span class="s0">OutlineInputBorder</span><span class="s2">(</span>
+                      <span class="s0">borderRadius</span><span class="s2">: </span><span class="s0">BorderRadius</span><span class="s2">.</span><span class="s0">circular</span><span class="s2">(</span><span class="s5">15</span><span class="s2">),</span>
+                    <span class="s2">),</span>
+                  <span class="s2">),</span>
+                <span class="s2">),</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">25</span><span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+              <span class="s1">&quot;Choose Ride&quot;</span><span class="s2">,</span>
+              <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">22</span><span class="s2">,</span>
+                <span class="s0">fontWeight</span><span class="s2">:</span><span class="s0">FontWeight</span><span class="s2">.</span><span class="s0">bold</span><span class="s2">,</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s0">rideCard</span><span class="s2">(</span>
+              <span class="s0">Icons</span><span class="s2">.</span><span class="s0">directions_car</span><span class="s2">,</span>
+              <span class="s1">&quot;Standard Ride&quot;</span><span class="s2">,</span>
+              <span class="s1">&quot;\$25 AUD&quot;</span><span class="s2">,</span>
+              <span class="s1">&quot;10 minutes away&quot;</span><span class="s2">,</span>
+            <span class="s2">),</span>
+
+
+            <span class="s0">rideCard</span><span class="s2">(</span>
+              <span class="s0">Icons</span><span class="s2">.</span><span class="s0">local_taxi</span><span class="s2">,</span>
+              <span class="s1">&quot;Premium Ride&quot;</span><span class="s2">,</span>
+              <span class="s1">&quot;\$45 AUD&quot;</span><span class="s2">,</span>
+              <span class="s1">&quot;5 minutes away&quot;</span><span class="s2">,</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Spacer</span><span class="s2">(),</span>
+
+
+            <span class="s0">SizedBox</span><span class="s2">(</span>
+              <span class="s0">width</span><span class="s2">:</span><span class="s0">double</span><span class="s2">.</span><span class="s0">infinity</span><span class="s2">,</span>
+              <span class="s0">height</span><span class="s2">:</span><span class="s5">55</span><span class="s2">,</span>
+
+              <span class="s0">child</span><span class="s2">:</span><span class="s0">ElevatedButton</span><span class="s2">(</span>
+
+                <span class="s0">onPressed</span><span class="s2">:(){</span>
+
+                  <span class="s0">Navigator</span><span class="s2">.</span><span class="s0">push</span><span class="s2">(</span>
+                    <span class="s0">context</span><span class="s2">,</span>
+                    <span class="s0">MaterialPageRoute</span><span class="s2">(</span>
+                      <span class="s0">builder</span><span class="s2">:(</span><span class="s0">context</span><span class="s2">)=&gt;</span>
+                      <span class="s3">const </span><span class="s0">DriverScreen</span><span class="s2">(),</span>
+                    <span class="s2">),</span>
+                  <span class="s2">);</span>
+
+                <span class="s2">},</span>
+
+
+                <span class="s0">child</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+                  <span class="s1">&quot;Book Ride&quot;</span><span class="s2">,</span>
+                  <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                    <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">18</span><span class="s2">,</span>
+                  <span class="s2">),</span>
+                <span class="s2">),</span>
+
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+          <span class="s2">],</span>
+        <span class="s2">),</span>
+      <span class="s2">),</span>
+    <span class="s2">);</span>
+  <span class="s2">}</span>
+
+
+  <span class="s0">Widget rideCard</span><span class="s2">(</span>
+      <span class="s0">IconData icon</span><span class="s2">,</span>
+      <span class="s0">String name</span><span class="s2">,</span>
+      <span class="s0">String price</span><span class="s2">,</span>
+      <span class="s0">String time</span><span class="s2">,</span>
+      <span class="s2">){</span>
+
+    <span class="s3">return </span><span class="s0">Card</span><span class="s2">(</span>
+
+      <span class="s0">child</span><span class="s2">:</span><span class="s0">ListTile</span><span class="s2">(</span>
+
+        <span class="s0">leading</span><span class="s2">:</span><span class="s0">Icon</span><span class="s2">(</span>
+          <span class="s0">icon</span><span class="s2">,</span>
+          <span class="s0">color</span><span class="s2">:</span><span class="s0">Colors</span><span class="s2">.</span><span class="s0">green</span><span class="s2">,</span>
+          <span class="s0">size</span><span class="s2">:</span><span class="s5">35</span><span class="s2">,</span>
+        <span class="s2">),</span>
+
+        <span class="s0">title</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s0">name</span><span class="s2">),</span>
+
+        <span class="s0">subtitle</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s0">time</span><span class="s2">),</span>
+
+        <span class="s0">trailing</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span>
+          <span class="s0">price</span><span class="s2">,</span>
+          <span class="s0">style</span><span class="s2">:</span><span class="s3">const </span><span class="s0">TextStyle</span><span class="s2">(</span>
+            <span class="s0">fontWeight</span><span class="s2">:</span><span class="s0">FontWeight</span><span class="s2">.</span><span class="s0">bold</span><span class="s2">,</span>
+          <span class="s2">),</span>
+        <span class="s2">),</span>
+
+      <span class="s2">),</span>
+    <span class="s2">);</span>
+  <span class="s2">}</span>
+<span class="s2">}</span>
+<span class="s4">// Driver Tracking Screen</span>
+
+<span class="s3">class </span><span class="s0">DriverScreen </span><span class="s3">extends </span><span class="s0">StatelessWidget </span><span class="s2">{</span>
+
+  <span class="s3">const </span><span class="s0">DriverScreen</span><span class="s2">({</span><span class="s3">super</span><span class="s2">.</span><span class="s0">key</span><span class="s2">});</span>
+
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build</span><span class="s2">(</span><span class="s0">BuildContext context</span><span class="s2">){</span>
+
+    <span class="s3">return </span><span class="s0">Scaffold</span><span class="s2">(</span>
+
+      <span class="s0">appBar</span><span class="s2">: </span><span class="s0">AppBar</span><span class="s2">(</span>
+        <span class="s0">title</span><span class="s2">: </span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Driver Tracking&quot;</span><span class="s2">),</span>
+      <span class="s2">),</span>
+
+
+      <span class="s0">body</span><span class="s2">: </span><span class="s0">Padding</span><span class="s2">(</span>
+        <span class="s0">padding</span><span class="s2">: </span><span class="s3">const </span><span class="s0">EdgeInsets</span><span class="s2">.</span><span class="s0">all</span><span class="s2">(</span><span class="s5">20</span><span class="s2">),</span>
+
+        <span class="s0">child</span><span class="s2">: </span><span class="s0">Column</span><span class="s2">(</span>
+
+          <span class="s0">children</span><span class="s2">: [</span>
+
+            <span class="s3">const </span><span class="s0">Icon</span><span class="s2">(</span>
+              <span class="s0">Icons</span><span class="s2">.</span><span class="s0">person_pin_circle</span><span class="s2">,</span>
+              <span class="s0">size</span><span class="s2">:</span><span class="s5">100</span><span class="s2">,</span>
+              <span class="s0">color</span><span class="s2">:</span><span class="s0">Colors</span><span class="s2">.</span><span class="s0">green</span><span class="s2">,</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">20</span><span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+              <span class="s1">&quot;Your driver is coming&quot;</span><span class="s2">,</span>
+              <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">24</span><span class="s2">,</span>
+                <span class="s0">fontWeight</span><span class="s2">:</span><span class="s0">FontWeight</span><span class="s2">.</span><span class="s0">bold</span><span class="s2">,</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">20</span><span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Card</span><span class="s2">(</span>
+              <span class="s0">child</span><span class="s2">:</span><span class="s0">ListTile</span><span class="s2">(</span>
+                <span class="s0">leading</span><span class="s2">:</span><span class="s0">Icon</span><span class="s2">(</span><span class="s0">Icons</span><span class="s2">.</span><span class="s0">person</span><span class="s2">),</span>
+                <span class="s0">title</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Ubaid&quot;</span><span class="s2">),</span>
+                <span class="s0">subtitle</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span>
+                  <span class="s1">&quot;Toyota Corolla • NSW-123&quot;</span><span class="s2">,</span>
+                <span class="s2">),</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Card</span><span class="s2">(</span>
+              <span class="s0">child</span><span class="s2">:</span><span class="s0">ListTile</span><span class="s2">(</span>
+                <span class="s0">leading</span><span class="s2">:</span><span class="s0">Icon</span><span class="s2">(</span><span class="s0">Icons</span><span class="s2">.</span><span class="s0">timer</span><span class="s2">),</span>
+                <span class="s0">title</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Arrival Time&quot;</span><span class="s2">),</span>
+                <span class="s0">subtitle</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span>
+                  <span class="s1">&quot;5 minutes&quot;</span><span class="s2">,</span>
+                <span class="s2">),</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Spacer</span><span class="s2">(),</span>
+
+
+            <span class="s0">SizedBox</span><span class="s2">(</span>
+              <span class="s0">width</span><span class="s2">:</span><span class="s0">double</span><span class="s2">.</span><span class="s0">infinity</span><span class="s2">,</span>
+              <span class="s0">height</span><span class="s2">:</span><span class="s5">55</span><span class="s2">,</span>
+
+              <span class="s0">child</span><span class="s2">:</span><span class="s0">ElevatedButton</span><span class="s2">(</span>
+
+                <span class="s0">onPressed</span><span class="s2">:(){</span>
+
+                  <span class="s0">Navigator</span><span class="s2">.</span><span class="s0">push</span><span class="s2">(</span>
+                    <span class="s0">context</span><span class="s2">,</span>
+                    <span class="s0">MaterialPageRoute</span><span class="s2">(</span>
+                      <span class="s0">builder</span><span class="s2">:(</span><span class="s0">context</span><span class="s2">)=&gt;</span>
+                      <span class="s3">const </span><span class="s0">PaymentScreen</span><span class="s2">(),</span>
+                    <span class="s2">),</span>
+                  <span class="s2">);</span>
+
+                <span class="s2">},</span>
+
+
+                <span class="s0">child</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+                  <span class="s1">&quot;Continue to Payment&quot;</span><span class="s2">,</span>
+                  <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                    <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">18</span><span class="s2">,</span>
+                  <span class="s2">),</span>
+                <span class="s2">),</span>
+
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+          <span class="s2">],</span>
+        <span class="s2">),</span>
+      <span class="s2">),</span>
+    <span class="s2">);</span>
+  <span class="s2">}</span>
+<span class="s2">}</span>
+
+
+
+<span class="s4">// Payment Screen</span>
+
+<span class="s3">class </span><span class="s0">PaymentScreen </span><span class="s3">extends </span><span class="s0">StatelessWidget </span><span class="s2">{</span>
+
+  <span class="s3">const </span><span class="s0">PaymentScreen</span><span class="s2">({</span><span class="s3">super</span><span class="s2">.</span><span class="s0">key</span><span class="s2">});</span>
+
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build</span><span class="s2">(</span><span class="s0">BuildContext context</span><span class="s2">){</span>
+
+    <span class="s3">return </span><span class="s0">Scaffold</span><span class="s2">(</span>
+
+      <span class="s0">appBar</span><span class="s2">:</span><span class="s0">AppBar</span><span class="s2">(</span>
+        <span class="s0">title</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Payment&quot;</span><span class="s2">),</span>
+        <span class="s0">centerTitle</span><span class="s2">:</span><span class="s3">true</span><span class="s2">,</span>
+      <span class="s2">),</span>
+
+
+      <span class="s0">body</span><span class="s2">:</span><span class="s0">Padding</span><span class="s2">(</span>
+        <span class="s0">padding</span><span class="s2">:</span><span class="s3">const </span><span class="s0">EdgeInsets</span><span class="s2">.</span><span class="s0">all</span><span class="s2">(</span><span class="s5">20</span><span class="s2">),</span>
+
+        <span class="s0">child</span><span class="s2">:</span><span class="s0">Column</span><span class="s2">(</span>
+
+          <span class="s0">children</span><span class="s2">:[</span>
+
+            <span class="s3">const </span><span class="s0">Icon</span><span class="s2">(</span>
+              <span class="s0">Icons</span><span class="s2">.</span><span class="s0">payment</span><span class="s2">,</span>
+              <span class="s0">size</span><span class="s2">:</span><span class="s5">100</span><span class="s2">,</span>
+              <span class="s0">color</span><span class="s2">:</span><span class="s0">Colors</span><span class="s2">.</span><span class="s0">green</span><span class="s2">,</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">20</span><span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+              <span class="s1">&quot;Choose Payment Method&quot;</span><span class="s2">,</span>
+              <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">24</span><span class="s2">,</span>
+                <span class="s0">fontWeight</span><span class="s2">:</span><span class="s0">FontWeight</span><span class="s2">.</span><span class="s0">bold</span><span class="s2">,</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">20</span><span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Card</span><span class="s2">(</span>
+              <span class="s0">child</span><span class="s2">:</span><span class="s0">ListTile</span><span class="s2">(</span>
+                <span class="s0">leading</span><span class="s2">:</span><span class="s0">Icon</span><span class="s2">(</span><span class="s0">Icons</span><span class="s2">.</span><span class="s0">credit_card</span><span class="s2">),</span>
+                <span class="s0">title</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Card Payment&quot;</span><span class="s2">),</span>
+                <span class="s0">subtitle</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Visa / Mastercard&quot;</span><span class="s2">),</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Card</span><span class="s2">(</span>
+              <span class="s0">child</span><span class="s2">:</span><span class="s0">ListTile</span><span class="s2">(</span>
+                <span class="s0">leading</span><span class="s2">:</span><span class="s0">Icon</span><span class="s2">(</span><span class="s0">Icons</span><span class="s2">.</span><span class="s0">money</span><span class="s2">),</span>
+                <span class="s0">title</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Cash&quot;</span><span class="s2">),</span>
+                <span class="s0">subtitle</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Pay after ride&quot;</span><span class="s2">),</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">20</span><span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+              <span class="s1">&quot;Total Fare: \$25 AUD&quot;</span><span class="s2">,</span>
+              <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">22</span><span class="s2">,</span>
+                <span class="s0">fontWeight</span><span class="s2">:</span><span class="s0">FontWeight</span><span class="s2">.</span><span class="s0">bold</span><span class="s2">,</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Spacer</span><span class="s2">(),</span>
+
+
+            <span class="s0">SizedBox</span><span class="s2">(</span>
+              <span class="s0">width</span><span class="s2">:</span><span class="s0">double</span><span class="s2">.</span><span class="s0">infinity</span><span class="s2">,</span>
+              <span class="s0">height</span><span class="s2">:</span><span class="s5">55</span><span class="s2">,</span>
+
+              <span class="s0">child</span><span class="s2">:</span><span class="s0">ElevatedButton</span><span class="s2">(</span>
+
+                <span class="s0">onPressed</span><span class="s2">:(){</span>
+
+                  <span class="s0">Navigator</span><span class="s2">.</span><span class="s0">push</span><span class="s2">(</span>
+                    <span class="s0">context</span><span class="s2">,</span>
+                    <span class="s0">MaterialPageRoute</span><span class="s2">(</span>
+                      <span class="s0">builder</span><span class="s2">:(</span><span class="s0">context</span><span class="s2">)=&gt;</span>
+                      <span class="s3">const </span><span class="s0">TripHistoryScreen</span><span class="s2">(),</span>
+                    <span class="s2">),</span>
+                  <span class="s2">);</span>
+
+                <span class="s2">},</span>
+
+
+                <span class="s0">child</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+                  <span class="s1">&quot;Confirm Ride&quot;</span><span class="s2">,</span>
+                  <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                    <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">18</span><span class="s2">,</span>
+                  <span class="s2">),</span>
+                <span class="s2">),</span>
+
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+          <span class="s2">],</span>
+        <span class="s2">),</span>
+      <span class="s2">),</span>
+    <span class="s2">);</span>
+  <span class="s2">}</span>
+<span class="s2">}</span>
+
+
+
+<span class="s4">// Trip History Screen</span>
+
+<span class="s3">class </span><span class="s0">TripHistoryScreen </span><span class="s3">extends </span><span class="s0">StatelessWidget </span><span class="s2">{</span>
+
+  <span class="s3">const </span><span class="s0">TripHistoryScreen</span><span class="s2">({</span><span class="s3">super</span><span class="s2">.</span><span class="s0">key</span><span class="s2">});</span>
+
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build</span><span class="s2">(</span><span class="s0">BuildContext context</span><span class="s2">){</span>
+
+    <span class="s3">return </span><span class="s0">Scaffold</span><span class="s2">(</span>
+
+      <span class="s0">appBar</span><span class="s2">:</span><span class="s0">AppBar</span><span class="s2">(</span>
+        <span class="s0">title</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Trip History&quot;</span><span class="s2">),</span>
+      <span class="s2">),</span>
+
+
+      <span class="s0">body</span><span class="s2">:</span><span class="s0">ListView</span><span class="s2">(</span>
+
+        <span class="s0">padding</span><span class="s2">:</span><span class="s3">const </span><span class="s0">EdgeInsets</span><span class="s2">.</span><span class="s0">all</span><span class="s2">(</span><span class="s5">20</span><span class="s2">),</span>
+
+        <span class="s0">children</span><span class="s2">:[</span>
+
+
+          <span class="s3">const </span><span class="s0">Card</span><span class="s2">(</span>
+            <span class="s0">child</span><span class="s2">:</span><span class="s0">ListTile</span><span class="s2">(</span>
+              <span class="s0">leading</span><span class="s2">:</span><span class="s0">Icon</span><span class="s2">(</span>
+                <span class="s0">Icons</span><span class="s2">.</span><span class="s0">flight</span><span class="s2">,</span>
+                <span class="s0">color</span><span class="s2">:</span><span class="s0">Colors</span><span class="s2">.</span><span class="s0">green</span><span class="s2">,</span>
+              <span class="s2">),</span>
+              <span class="s0">title</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Sydney Airport to CBD&quot;</span><span class="s2">),</span>
+              <span class="s0">subtitle</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span>
+                <span class="s1">&quot;Toyota Corolla • Yesterday&quot;</span><span class="s2">,</span>
+              <span class="s2">),</span>
+              <span class="s0">trailing</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;\$35&quot;</span><span class="s2">),</span>
+            <span class="s2">),</span>
+          <span class="s2">),</span>
+
+
+
+          <span class="s3">const </span><span class="s0">Card</span><span class="s2">(</span>
+            <span class="s0">child</span><span class="s2">:</span><span class="s0">ListTile</span><span class="s2">(</span>
+              <span class="s0">leading</span><span class="s2">:</span><span class="s0">Icon</span><span class="s2">(</span>
+                <span class="s0">Icons</span><span class="s2">.</span><span class="s0">directions_car</span><span class="s2">,</span>
+                <span class="s0">color</span><span class="s2">:</span><span class="s0">Colors</span><span class="s2">.</span><span class="s0">green</span><span class="s2">,</span>
+              <span class="s2">),</span>
+              <span class="s0">title</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Sydney to Parramatta&quot;</span><span class="s2">),</span>
+              <span class="s0">subtitle</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span>
+                <span class="s1">&quot;Premium Ride • Last week&quot;</span><span class="s2">,</span>
+              <span class="s2">),</span>
+              <span class="s0">trailing</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;\$45&quot;</span><span class="s2">),</span>
+            <span class="s2">),</span>
+          <span class="s2">),</span>
+
+
+          <span class="s3">const </span><span class="s0">Card</span><span class="s2">(</span>
+            <span class="s0">child</span><span class="s2">:</span><span class="s0">ListTile</span><span class="s2">(</span>
+              <span class="s0">leading</span><span class="s2">:</span><span class="s0">Icon</span><span class="s2">(</span>
+                <span class="s0">Icons</span><span class="s2">.</span><span class="s0">local_taxi</span><span class="s2">,</span>
+                <span class="s0">color</span><span class="s2">:</span><span class="s0">Colors</span><span class="s2">.</span><span class="s0">green</span><span class="s2">,</span>
+              <span class="s2">),</span>
+              <span class="s0">title</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;City Ride&quot;</span><span class="s2">),</span>
+              <span class="s0">subtitle</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span>
+                <span class="s1">&quot;Standard Ride • 2 weeks ago&quot;</span><span class="s2">,</span>
+              <span class="s2">),</span>
+              <span class="s0">trailing</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;\$25&quot;</span><span class="s2">),</span>
+            <span class="s2">),</span>
+          <span class="s2">),</span>
+
+
+          <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">20</span><span class="s2">),</span>
+
+
+          <span class="s0">ElevatedButton</span><span class="s2">(</span>
+
+            <span class="s0">onPressed</span><span class="s2">:(){</span>
+
+              <span class="s0">Navigator</span><span class="s2">.</span><span class="s0">push</span><span class="s2">(</span>
+                <span class="s0">context</span><span class="s2">,</span>
+                <span class="s0">MaterialPageRoute</span><span class="s2">(</span>
+                  <span class="s0">builder</span><span class="s2">:(</span><span class="s0">context</span><span class="s2">)=&gt;</span>
+                  <span class="s3">const </span><span class="s0">ProfileScreen</span><span class="s2">(),</span>
+                <span class="s2">),</span>
+              <span class="s2">);</span>
+
+            <span class="s2">},</span>
+
+            <span class="s0">child</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+              <span class="s1">&quot;Open Profile&quot;</span><span class="s2">,</span>
+            <span class="s2">),</span>
+
+          <span class="s2">),</span>
+
+        <span class="s2">],</span>
+      <span class="s2">),</span>
+    <span class="s2">);</span>
+  <span class="s2">}</span>
+<span class="s2">}</span>
+
+
+
+<span class="s4">// Profile Screen</span>
+
+<span class="s3">class </span><span class="s0">ProfileScreen </span><span class="s3">extends </span><span class="s0">StatelessWidget </span><span class="s2">{</span>
+
+  <span class="s3">const </span><span class="s0">ProfileScreen</span><span class="s2">({</span><span class="s3">super</span><span class="s2">.</span><span class="s0">key</span><span class="s2">});</span>
+
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build</span><span class="s2">(</span><span class="s0">BuildContext context</span><span class="s2">){</span>
+
+    <span class="s3">return </span><span class="s0">Scaffold</span><span class="s2">(</span>
+
+      <span class="s0">appBar</span><span class="s2">:</span><span class="s0">AppBar</span><span class="s2">(</span>
+        <span class="s0">title</span><span class="s2">:</span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Profile&quot;</span><span class="s2">),</span>
+      <span class="s2">),</span>
+
+
+      <span class="s0">body</span><span class="s2">:</span><span class="s0">Padding</span><span class="s2">(</span>
+        <span class="s0">padding</span><span class="s2">:</span><span class="s3">const </span><span class="s0">EdgeInsets</span><span class="s2">.</span><span class="s0">all</span><span class="s2">(</span><span class="s5">20</span><span class="s2">),</span>
+
+        <span class="s0">child</span><span class="s2">:</span><span class="s0">Column</span><span class="s2">(</span>
+
+          <span class="s0">children</span><span class="s2">:[</span>
+
+            <span class="s3">const </span><span class="s0">CircleAvatar</span><span class="s2">(</span>
+              <span class="s0">radius</span><span class="s2">:</span><span class="s5">50</span><span class="s2">,</span>
+              <span class="s0">child</span><span class="s2">:</span><span class="s0">Icon</span><span class="s2">(</span>
+                <span class="s0">Icons</span><span class="s2">.</span><span class="s0">person</span><span class="s2">,</span>
+                <span class="s0">size</span><span class="s2">:</span><span class="s5">60</span><span class="s2">,</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">20</span><span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+              <span class="s1">&quot;Ubaid&quot;</span><span class="s2">,</span>
+              <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">26</span><span class="s2">,</span>
+                <span class="s0">fontWeight</span><span class="s2">:</span><span class="s0">FontWeight</span><span class="s2">.</span><span class="s0">bold</span><span class="s2">,</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">SizedBox</span><span class="s2">(</span><span class="s0">height</span><span class="s2">:</span><span class="s5">10</span><span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+              <span class="s1">&quot;ubaid@email.com&quot;</span><span class="s2">,</span>
+              <span class="s0">style</span><span class="s2">:</span><span class="s0">TextStyle</span><span class="s2">(</span>
+                <span class="s0">fontSize</span><span class="s2">:</span><span class="s5">16</span><span class="s2">,</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Card</span><span class="s2">(</span>
+              <span class="s0">child</span><span class="s2">:</span><span class="s0">ListTile</span><span class="s2">(</span>
+                <span class="s0">leading</span><span class="s2">:</span><span class="s0">Icon</span><span class="s2">(</span><span class="s0">Icons</span><span class="s2">.</span><span class="s0">phone</span><span class="s2">),</span>
+                <span class="s0">title</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Phone&quot;</span><span class="s2">),</span>
+                <span class="s0">subtitle</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;+61 400 123 456&quot;</span><span class="s2">),</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+
+            <span class="s3">const </span><span class="s0">Card</span><span class="s2">(</span>
+              <span class="s0">child</span><span class="s2">:</span><span class="s0">ListTile</span><span class="s2">(</span>
+                <span class="s0">leading</span><span class="s2">:</span><span class="s0">Icon</span><span class="s2">(</span><span class="s0">Icons</span><span class="s2">.</span><span class="s0">location_on</span><span class="s2">),</span>
+                <span class="s0">title</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Location&quot;</span><span class="s2">),</span>
+                <span class="s0">subtitle</span><span class="s2">:</span><span class="s0">Text</span><span class="s2">(</span>
+                  <span class="s1">&quot;Sydney, NSW, Australia&quot;</span><span class="s2">,</span>
+                <span class="s2">),</span>
+              <span class="s2">),</span>
+            <span class="s2">),</span>
+
+          <span class="s2">],</span>
+        <span class="s2">),</span>
+      <span class="s2">),</span>
+    <span class="s2">);</span>
+  <span class="s2">}</span>
+<span class="s2">}</span>
+<span class="s3">class </span><span class="s0">MapScreen </span><span class="s3">extends </span><span class="s0">StatefulWidget </span><span class="s2">{</span>
+  <span class="s3">const </span><span class="s0">MapScreen</span><span class="s2">({</span><span class="s3">super</span><span class="s2">.</span><span class="s0">key</span><span class="s2">});</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">State</span><span class="s2">&lt;</span><span class="s0">MapScreen</span><span class="s2">&gt; </span><span class="s0">createState</span><span class="s2">() =&gt; </span><span class="s0">_MapScreenState</span><span class="s2">();</span>
+<span class="s2">}</span>
+
+
+<span class="s3">class </span><span class="s0">_MapScreenState </span><span class="s3">extends </span><span class="s0">State</span><span class="s2">&lt;</span><span class="s0">MapScreen</span><span class="s2">&gt; {</span>
+
+  <span class="s0">GoogleMapController</span><span class="s2">? </span><span class="s0">mapController</span><span class="s2">;</span>
+
+  <span class="s3">final </span><span class="s0">TextEditingController searchController </span><span class="s2">=</span>
+  <span class="s0">TextEditingController</span><span class="s2">();</span>
+
+
+  <span class="s0">static </span><span class="s3">const </span><span class="s0">LatLng sydney </span><span class="s2">=</span>
+  <span class="s0">LatLng</span><span class="s2">(-</span><span class="s5">33.8688</span><span class="s2">, </span><span class="s5">151.2093</span><span class="s2">);</span>
+
+
+  <span class="s0">LatLng selectedLocation </span><span class="s2">= </span><span class="s0">sydney</span><span class="s2">;</span>
+
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build</span><span class="s2">(</span><span class="s0">BuildContext context</span><span class="s2">) {</span>
+
+    <span class="s3">return </span><span class="s0">Scaffold</span><span class="s2">(</span>
+
+      <span class="s0">appBar</span><span class="s2">: </span><span class="s0">AppBar</span><span class="s2">(</span>
+        <span class="s0">title</span><span class="s2">: </span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span><span class="s1">&quot;Select Location&quot;</span><span class="s2">),</span>
+      <span class="s2">),</span>
+
+
+      <span class="s0">body</span><span class="s2">: </span><span class="s0">Stack</span><span class="s2">(</span>
+
+        <span class="s0">children</span><span class="s2">: [</span>
+
+          <span class="s0">GoogleMap</span><span class="s2">(</span>
+
+            <span class="s0">initialCameraPosition</span><span class="s2">: </span><span class="s3">const </span><span class="s0">CameraPosition</span><span class="s2">(</span>
+              <span class="s0">target</span><span class="s2">: </span><span class="s0">sydney</span><span class="s2">,</span>
+              <span class="s0">zoom</span><span class="s2">: </span><span class="s5">14</span><span class="s2">,</span>
+            <span class="s2">),</span>
+
+
+            <span class="s0">onMapCreated</span><span class="s2">: (</span><span class="s0">controller</span><span class="s2">) {</span>
+              <span class="s0">mapController </span><span class="s2">= </span><span class="s0">controller</span><span class="s2">;</span>
+            <span class="s2">},</span>
+
+
+            <span class="s0">onTap</span><span class="s2">: (</span><span class="s0">location</span><span class="s2">) {</span>
+
+              <span class="s0">setState</span><span class="s2">(() {</span>
+                <span class="s0">selectedLocation </span><span class="s2">= </span><span class="s0">location</span><span class="s2">;</span>
+              <span class="s2">});</span>
+
+            <span class="s2">},</span>
+
+
+            <span class="s0">markers</span><span class="s2">: {</span>
+
+              <span class="s0">Marker</span><span class="s2">(</span>
+                <span class="s0">markerId</span><span class="s2">: </span><span class="s3">const </span><span class="s0">MarkerId</span><span class="s2">(</span><span class="s1">&quot;selected&quot;</span><span class="s2">),</span>
+                <span class="s0">position</span><span class="s2">: </span><span class="s0">selectedLocation</span><span class="s2">,</span>
+                <span class="s0">infoWindow</span><span class="s2">: </span><span class="s3">const </span><span class="s0">InfoWindow</span><span class="s2">(</span>
+                  <span class="s0">title</span><span class="s2">: </span><span class="s1">&quot;Selected Location&quot;</span><span class="s2">,</span>
+                <span class="s2">),</span>
+              <span class="s2">),</span>
+
+            <span class="s2">},</span>
+
+          <span class="s2">),</span>
+
+
+
+          <span class="s4">// Search box</span>
+
+          <span class="s0">Positioned</span><span class="s2">(</span>
+
+            <span class="s0">top</span><span class="s2">: </span><span class="s5">20</span><span class="s2">,</span>
+            <span class="s0">left</span><span class="s2">: </span><span class="s5">20</span><span class="s2">,</span>
+            <span class="s0">right</span><span class="s2">: </span><span class="s5">20</span><span class="s2">,</span>
+
+            <span class="s0">child</span><span class="s2">: </span><span class="s0">Card</span><span class="s2">(</span>
+
+              <span class="s0">child</span><span class="s2">: </span><span class="s0">TextField</span><span class="s2">(</span>
+
+                <span class="s0">controller</span><span class="s2">: </span><span class="s0">searchController</span><span class="s2">,</span>
+
+                <span class="s0">decoration</span><span class="s2">: </span><span class="s0">InputDecoration</span><span class="s2">(</span>
+
+                  <span class="s0">hintText</span><span class="s2">: </span><span class="s1">&quot;Search pickup or destination&quot;</span><span class="s2">,</span>
+
+                  <span class="s0">prefixIcon</span><span class="s2">: </span><span class="s3">const </span><span class="s0">Icon</span><span class="s2">(</span>
+                    <span class="s0">Icons</span><span class="s2">.</span><span class="s0">search</span><span class="s2">,</span>
+                  <span class="s2">),</span>
+
+                  <span class="s0">border</span><span class="s2">: </span><span class="s0">OutlineInputBorder</span><span class="s2">(</span>
+                    <span class="s0">borderRadius</span><span class="s2">: </span><span class="s0">BorderRadius</span><span class="s2">.</span><span class="s0">circular</span><span class="s2">(</span><span class="s5">15</span><span class="s2">),</span>
+                    <span class="s0">borderSide</span><span class="s2">: </span><span class="s0">BorderSide</span><span class="s2">.</span><span class="s0">none</span><span class="s2">,</span>
+                  <span class="s2">),</span>
+
+                  <span class="s0">filled</span><span class="s2">: </span><span class="s3">true</span><span class="s2">,</span>
+
+                  <span class="s0">fillColor</span><span class="s2">: </span><span class="s0">Colors</span><span class="s2">.</span><span class="s0">white</span><span class="s2">,</span>
+
+                <span class="s2">),</span>
+
+              <span class="s2">),</span>
+
+            <span class="s2">),</span>
+
+          <span class="s2">),</span>
+
+
+
+          <span class="s4">// Confirm button</span>
+
+          <span class="s0">Positioned</span><span class="s2">(</span>
+
+            <span class="s0">bottom</span><span class="s2">: </span><span class="s5">30</span><span class="s2">,</span>
+            <span class="s0">left</span><span class="s2">: </span><span class="s5">20</span><span class="s2">,</span>
+            <span class="s0">right</span><span class="s2">: </span><span class="s5">20</span><span class="s2">,</span>
+
+            <span class="s0">child</span><span class="s2">: </span><span class="s0">SizedBox</span><span class="s2">(</span>
+
+              <span class="s0">height</span><span class="s2">: </span><span class="s5">55</span><span class="s2">,</span>
+
+              <span class="s0">child</span><span class="s2">: </span><span class="s0">ElevatedButton</span><span class="s2">(</span>
+
+                <span class="s0">onPressed</span><span class="s2">: () {</span>
+
+                  <span class="s0">Navigator</span><span class="s2">.</span><span class="s0">pop</span><span class="s2">(</span>
+                    <span class="s0">context</span><span class="s2">,</span>
+                    <span class="s0">selectedLocation</span><span class="s2">,</span>
+                  <span class="s2">);</span>
+
+                <span class="s2">},</span>
+
+
+                <span class="s0">child</span><span class="s2">: </span><span class="s3">const </span><span class="s0">Text</span><span class="s2">(</span>
+                  <span class="s1">&quot;Confirm Location&quot;</span><span class="s2">,</span>
+                  <span class="s0">style</span><span class="s2">: </span><span class="s0">TextStyle</span><span class="s2">(</span>
+                    <span class="s0">fontSize</span><span class="s2">: </span><span class="s5">18</span><span class="s2">,</span>
+                  <span class="s2">),</span>
+                <span class="s2">),</span>
+
+              <span class="s2">),</span>
+
+            <span class="s2">),</span>
+
+          <span class="s2">),</span>
+
+        <span class="s2">],</span>
+
+      <span class="s2">),</span>
+
+    <span class="s2">);</span>
+
+  <span class="s2">}</span>
+
+<span class="s2">}</span></pre>
+</body>
+</html>

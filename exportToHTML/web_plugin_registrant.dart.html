@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>web_plugin_registrant.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #6aab73;}
+.s3 { color: #bcbec4;}
+.s4 { color: #cf8e6d;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+web_plugin_registrant.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">// Flutter web plugin registrant file.</span>
+<span class="s0">//</span>
+<span class="s0">// Generated file. Do not edit.</span>
+<span class="s0">//</span>
+
+<span class="s0">// @dart = 2.13</span>
+<span class="s0">// ignore_for_file: type=lint</span>
+
+<span class="s1">import </span><span class="s2">'package:geolocator_web/geolocator_web.dart'</span><span class="s3">;</span>
+<span class="s1">import </span><span class="s2">'package:google_maps_flutter_web/google_maps_flutter_web.dart'</span><span class="s3">;</span>
+<span class="s1">import </span><span class="s2">'package:flutter_web_plugins/flutter_web_plugins.dart'</span><span class="s3">;</span>
+
+<span class="s4">void </span><span class="s1">registerPlugins</span><span class="s3">([</span><span class="s4">final </span><span class="s1">Registrar</span><span class="s3">? </span><span class="s1">pluginRegistrar</span><span class="s3">]) {</span>
+  <span class="s4">final </span><span class="s1">Registrar registrar </span><span class="s3">= </span><span class="s1">pluginRegistrar </span><span class="s3">?? </span><span class="s1">webPluginRegistrar</span><span class="s3">;</span>
+  <span class="s1">GeolocatorPlugin</span><span class="s3">.</span><span class="s1">registerWith</span><span class="s3">(</span><span class="s1">registrar</span><span class="s3">);</span>
+  <span class="s1">GoogleMapsPlugin</span><span class="s3">.</span><span class="s1">registerWith</span><span class="s3">(</span><span class="s1">registrar</span><span class="s3">);</span>
+  <span class="s1">registrar</span><span class="s3">.</span><span class="s1">registerMessageHandler</span><span class="s3">();</span>
+<span class="s3">}</span>
+</pre>
+</body>
+</html>
